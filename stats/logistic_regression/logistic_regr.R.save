@@ -1,0 +1,38 @@
+#Lennart Oblong, 09.06.2022
+###Code for a linear mixed effect model, which will identify the need for a linear regression or a logistic regression automatically ###
+
+require(ggplot2)
+require(GGally)
+require(reshape2)
+require(lme4)
+require(compiler)
+require(parallel)
+require(boot)
+require(lattice)
+
+#get data
+
+filenames_ADHD <- list.files(path ='/projects/0/einf2700/oblongl/polygen_comp-NeuroIMAGE_PRSice-output_cov_perm-sigonly', pattern = '.summary', full.names = TRUE)
+
+
+data_ADHD <- read.table(filenames_ADHD('.summary','ADHD_3factor.all_score'), sep = ' ', header = T)[,-1]
+
+dat_SUBAFF <- read.table(here('all_score','ADHD_3factor.all_score'), sep = ' ', header = T)[,-1]
+
+
+# prep data for regression
+
+pheno_cov <- read.table("/projects/0/einf2700/oblongl/NeuroIMAGE_genetics_imputedcopy/Mcovall_4prsice_FID_tab.txt", sep = ' ', header = T)
+pheno_cov[,c(1,2,3,4,5)] <- sapply(pheno_cov[,c(1,2,3,4,5)], as.factor)
+
+PRS_cov <- data.frame(FID = pheno_cov$FID, IID = pheno_cov$IID, Site = pheno_cov$Site, Batch = pheno_cov$Batch,Sex = pheno_cov$Sex)
+
+PRS_seven_PC <- merge(merge(merge(PRS_seven_PC,PC1_ADHD, by = 'IID'),PC1_ASD, by = 'IID'),pheno_cov[,c(1,5:18)], by = 'IID')
+
+PRS_seven_PC <- PRS_seven_PC[complete.cases(PRS_seven_PC),]
+
+
+
+ADHD_reg <- glmer(PRS ~ SUBAFF_EVER*Sex + Site + Batch, random=~1 | FID, data = data, na.action = na.omit)
+
+SUBAFF_reg <- glmer(
