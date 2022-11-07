@@ -5,6 +5,7 @@
 # For window users, the reason why PRSice doesn't work with window is due to
 # area flagged with WINDOW PEOPLE. If you can go around that, then you can
 # make PRSice work (though I have not debug PRSice executable in window)
+# This script is (clearly) the main script of the PRSice2 toolbox from Choi et al., and serves as the basis for all PCS calculations.
 
 
 # Remove annoying messages ------------------------------------------------
