@@ -2,7 +2,7 @@
 Running polygenic score analysis on GenomICA output - code repository for reproducibility. 
 Contains the code to reproduce the results of our work to explore GenomICA output out-of-sample, published as a preprint on MedRXiv (https://www.medrxiv.org/content/10.1101/2025.06.06.25329112v1)
 This work is a follow up to our previous work using the FSL MELODIC algorithm v3.15 (https://fsl.fmrib.ox.ac.uk/fsl/fslwiki/MELODIC) on genetic data.
-Please cite our work when implementing genomic ICA in your own work. (https://onlinelibrary.wiley.com/doi/10.1111/gbb.12876)
+Please cite our previous work when implementing genomICA in your own work. (https://onlinelibrary.wiley.com/doi/10.1111/gbb.12876)
 
 A new and improved iteration of genomic components with visualizations and associated traits is available under http://genomica.info/ ! Should you wish to gain access to components for your own research please contact lennart.oblong@donders.ru.nl.
 The output of the current analysis is also presented on this website, showing the vast trait associations we uncovered using component-based polygenic component scores.
