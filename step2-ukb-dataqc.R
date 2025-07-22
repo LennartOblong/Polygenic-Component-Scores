@@ -118,7 +118,7 @@ cat("Data Wrangling neuroimaging data ...", "\n")
 # function to match datafield IDs with corresponding description using a key filer
 # this function again assumes the standard UK Biobank naming convention in the form of datafieldID.instance.array
 replacenumbers <- function(colnames, lookup_table, pheno_filename, lookup_filename) {
-  tracking_file <- paste0(ukb_dir, "/replacement_tracking2_", pheno_filename, "_", lookup_filename, ".csv")
+  tracking_file <- paste0(indir, "/replacement_tracking2_", pheno_filename, "_", lookup_filename, ".csv")
   changes <- list()
 
   for (i in seq_along(colnames)) {
